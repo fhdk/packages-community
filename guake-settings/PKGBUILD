@@ -1,0 +1,17 @@
+# Maintainer: fhdk <fh at manjaro org>
+
+pkgbase=guake-settings
+pkgname=('manjaro-guake-settings')
+pkgver=1.0
+pkgrel=1
+arch=('any')
+license=('MIT')
+source=("00-manjaro-guake-config" "guake-settings.install")
+sha256sums=('539015b0d7b3b13c6c870d535143f2aad95852112d5b6ef27541cb5b1e346c98'
+            '5e3dc55e77caaea62ae452e4ebb662bf210d5e34960c2d3cac4f3ba66281945b')
+install=guake-settings.install
+
+package(){
+    install -d "$pkgdir/etc/dconf/db/user.d"
+    cp "00-manjaro-guake-config" "$pkgdir/etc/dconf/db/user.d"
+}
