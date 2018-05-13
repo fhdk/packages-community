@@ -2,7 +2,7 @@
 
 _pkgname=manjaro-webdad-settings
 pkgname="$_pkgname-git"
-pkgver=r18.8c425dc
+pkgver=r19.03e397f
 pkgrel=1
 pkgdesc="Manjaro WebDad Settings"
 arch=('any')
@@ -26,6 +26,6 @@ package(){
 	install -d $pkgdir/etc
         install -d $pkgdir/usr
 	cp -r $srcdir/$_pkgname/etc $pkgdir/
-        install -Dm755 "$srcdir/$_pkgname/usr/bin/start-jade" "$pkgdir/usr/bin/start-jade"
+        install -Dm755 "$srcdir/$_pkgname/usr/bin/jade-session" "$pkgdir/usr/bin/jade-session"
         cp -r $srcdir/$_pkgname/usr $pkgdir/
 }

@@ -17,13 +17,14 @@ _kernelname=-MANJARO
 _aufs=20180312
 _pkgver=${_basekernel}.${_sub}
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('bc'
     'docbook-xsl'
     'elfutils'
+    'git'
     'inetutils'
     'kmod'
     'xmlto')
@@ -46,6 +47,10 @@ source=("$url/pub/linux/kernel/v4.x/linux-${_basekernel}.tar.xz"
         'aufs4-standalone.patch'
         'tmpfs-idr.patch'
         'vfs-ino.patch'
+        # gcc8 ojtool patches
+        '0001-objtool_Fix_noreturn_detection_for_recursive_sibling_calls.patch'
+        '0002-objtool_support_GCC8_cold_subfunctions.patch'
+        '0003-objtool_support_GCC8_switch_tables.patch'
         # BFQ
         "0001-BFQ-${_bfq}-${_bfqdate}.patch"
         # ARCH Patches
@@ -75,7 +80,7 @@ source=("$url/pub/linux/kernel/v4.x/linux-${_basekernel}.tar.xz"
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch')
 sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'f5ef83461054024814846eb816c76eba1b903f7e3e38c3417027b33070b60d91'
-            '9e88f6584e5e9f6c2eb2f3e7db377c7df175a2e08952b60f863a3eda4f50d825'
+            '91a3dee321852dfd64720cc19b3f2fa04c12655426d1ed66de7f4816ec368031'
             'b44d81446d8b53d5637287c30ae3eb64cae0078c3fbc45fcf1081dd6699818b5'
             '0fb6d51e5d8cd1dc737104c2d1487a38ff7cb50b1f8cce74e1776caa2d51490b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -88,6 +93,9 @@ sha256sums=('63f6dc8e3c9f3a0273d5d6f4dca38a2413ca3a5f689329d05b750e4c87bb21b9'
             'a8d6c0d5ae96ea722ad7842134684a4d44f7d90dd306eca82a88bf3f753fa732'
             'dd4f4de182a1807796dd6756f67edcf2f354335976c309532157716be07882c1'
             '00f0e0862dd31e7248df557672ebc540d5b38d34eca57d14d796540b274bf52b'
+            '0d2ac82871694368a563f6082ffffc891cbbb7a5a16ca1d18792fdda95ed4840'
+            '46d7929976781187de803b1d600e7e5577d633b0c9ae4e6e222801e9787594a1'
+            '94b1f14b4cdb336556e23d4c737e9a805c798380508a75c18c23a5a7ff11eda8'
             'add5d66f3ab452514dbd2591922f440f94fbc003f6e33e588c17f627c2dc80e4'
             '37b86ca3de148a34258e3176dbf41488d9dbd19e93adbd22a062b3c41332ce85'
             'd365ce80dab359d5277bd2f8568cad50a30ab269f222ed1bb12b8d74571e24a6'
@@ -119,6 +127,12 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "../patch-${_pkgver}"
+
+  # gcc8 ojtool patches
+  msg "gcc8 objtool patches..."
+  patch -p1 -i '../0001-objtool_Fix_noreturn_detection_for_recursive_sibling_calls.patch'
+  patch -p1 -i '../0002-objtool_support_GCC8_cold_subfunctions.patch'
+  patch -p1 -i '../0003-objtool_support_GCC8_switch_tables.patch'
 
   # Add RT patch
   msg "realtime patch..."
