@@ -5,22 +5,23 @@
 pkgbase=manjaro-xfce-gtk3-settings
 pkgname=('manjaro-xfce-gtk3-settings'
          'manjaro-xfce-gtk3-minimal-settings')
-pkgver=20180502
+pkgver=20180516
 pkgrel=1
 pkgdesc="Manjaro Linux Xfce settings"
 arch=('any')
 url="https://github.com/manjaro/manjaro-xfce-settings"
 license=('GPL')
-depends=('breath-wallpaper'
+depends=('illyria-wallpaper'
+         'kvantum-manjaro'
+         'kvantum-qt5'
          'manjaro-base-skel'
          'manjaro-icons'
-         'qt5ct'
+         'noto-fonts'
+         'papirus-maia-icon-theme'
          'qt5-styleplugins'
-         'vibrancy-icons-teal'
-         'adapta-maia-theme'
-         'kvantum-qt5'
-         'kvantum-manjaro'
-         'xcursor-breeze')
+         'qt5ct'
+         'xcursor-breeze'
+         'adapta-maia-theme')
 makedepends=('git')
 source=("$pkgbase::git+$url.git" 'manjaro-xfce-settings.hook' 'mxs-bgd-sym')
 sha256sums=('SKIP'
@@ -33,7 +34,7 @@ pkgver() {
 
 _inst_dir(){
 	install -d $pkgdir/etc
-	cp -r $srcdir/$pkgbase$1/skel $pkgdir/etc
+	cp -rL $srcdir/$pkgbase$1/skel $pkgdir/etc
 
 	install -d $pkgdir/usr/share/glib-2.0/schemas
 	cp $srcdir/$pkgbase/schemas/* $pkgdir/usr/share/glib-2.0/schemas
