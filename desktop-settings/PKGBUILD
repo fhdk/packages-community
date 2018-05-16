@@ -231,7 +231,7 @@ package_manjaro-openbox-settings() {
     pkgdesc='Manjaro Linux Openbox Settings'
     depends=('manjaro-base-skel')
     optdepends=('manjaro-openbox-extra-skel' 'manjaro-openbox-minimal-skel')
-    #conflicts=('manjaro-desktop-settings' 'manjaro-openbox-settings')
+    conflicts=('manjaro-desktop-settings')
     provides=('manjaro-desktop-settings')
     replaces=('manjaro-openbox-settings-extra' 'manjaro-openbox-settings-minimal')
 

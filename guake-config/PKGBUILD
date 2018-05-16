@@ -1,0 +1,21 @@
+# Maintainer: fhdk <fh at manjaro org>
+
+pkgbase=guake-config
+pkgname=('manjaro-guake-config')
+pkgver=1.1
+pkgrel=1
+arch=('any')
+license=('MIT')
+source=("00-manjaro-guake-config" "guake-config.install" "user")
+backup=('etc/dconf/profile/user' 'etc/dconf/db/user.d/00-manjaro-guake-config')
+sha256sums=('539015b0d7b3b13c6c870d535143f2aad95852112d5b6ef27541cb5b1e346c98'
+            '5e3dc55e77caaea62ae452e4ebb662bf210d5e34960c2d3cac4f3ba66281945b'
+            '33b86e3c276de2d13c5c1c4c8dae8e4bd0782b3e274cdd82aa3bb1556d483214')
+install=guake-config.install
+
+package(){
+    install -d "$pkgdir/etc/dconf/profile"
+    cp "user" "$pkgdir/etc/dconf/profile/user"
+    install -d "$pkgdir/etc/dconf/db/user.d"
+    cp "00-manjaro-guake-config" "$pkgdir/etc/dconf/db/user.d"
+}

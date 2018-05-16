@@ -2,19 +2,19 @@
 
 pkgbase=openbox-meta-packages
 pkgname=('manjaro-openbox-core' 'manjaro-openbox-extra' 'manjaro-openbox-minimal')
-pkgver=1.3.0.6
-pkgrel=2
+pkgver=1.3.3.1
+pkgrel=1
 arch=('any')
 license=('MIT')
 
 
 package_manjaro-openbox-core() {
     pkgdesc="Manjaro Openbox Core Packages [META]"
-    provides=('manjaro-openbox-core')
+    provides=('manjaro-openbox-core' 'manjaro-openbox-base')
     optdepends=(
         'manjaro-openbox-extra' 'manjaro-openbox-extra-skel'
-        'manjaro-openbox-minimal' 'manjaro-openbox-minimal-skel')
-    depends=(
+        'manjaro-openbox-minimal' 'manjaro-openbox-minimal-skel'
+        'manjaro-guake-config' 'manjaro-zsh-config' 'manjaro-openbox-settings'
         'manjaro-openbox-common' 'manjaro-openbox-grub-theme' 'manjaro-openbox-scripts'
         'manjaro-openbox-theming-fonts' 'manjaro-openbox-theming-icons' 'manjaro-openbox-theming-theme'
         'arandr'
@@ -43,25 +43,25 @@ package_manjaro-openbox-core() {
 package_manjaro-openbox-minimal() {
     pkgdesc="Manjaro Openbox Minimal Packages [META]"
     provides=('manjaro-openbox-minimal')
-    optdepends=('manjaro-openbox-minimal-skel')
-    depends=(
-        'manjaro-openbox-core'
-        'abiword'
-        'basilisk-bin' 'bind-tools'
-        'claws-mail' 'claws-mail-themes' 'clawsker' 'clonezilla'
-        'fsarchiver'
-        'galculator' 'gnumeric' 'gpicview-gtk3' 'gsimplecal' 'gvfs' 'gvfs-afc' 'gvfs-mtp' 'gvfs-smb'
+    optdepends=(
+        'manjaro-openbox-core' 'manjaro-openbox-minimal-skel'
+        'manjaro-guake-config' 'manjaro-zsh-config' 'manjaro-openbox-settings'
+        'manjaro-openbox-common' 'manjaro-openbox-grub-theme' 'manjaro-openbox-scripts'
+        'manjaro-openbox-theming-fonts' 'manjaro-openbox-theming-icons' 'manjaro-openbox-theming-theme'
+        'basilisk-bin'
+        'sylpheed'
+        'galculator' 'gpicview-gtk3' 'gsimplecal' 'gvfs' 'gvfs-afc' 'gvfs-mtp'
         'htop'
         'inxi'
         'lynx' 'lxappearance-gtk3' 'lxappearance-obconf-gtk3'
         'mc' 'mintstick'
-        'net-tools' 'networkmanager' 'nmap'
-        'p7zip' 'pacui' 'pcmanfm-gtk3' 'ps_mem'
+        'networkmanager' 'networkmanager-dmenu'
+        'p7zip' 'pacui' 'ps_mem'
         'ranger'
         'qpdfview'
-        'screenfetch' 'smbclient' 'sublime-text-dev'
-        'testdisk'
-        'wicd-gtk' 'wicd-patched'
+        'screenfetch' 'sublime-text-dev'
+        'thunar-gtk3'
+        'unarchiver'
         'xarchiver'
     )
 }
@@ -69,31 +69,33 @@ package_manjaro-openbox-minimal() {
 package_manjaro-openbox-extra() {
     pkgdesc="Manjaro Openbox Extra Packages [META]"
     provides=('manjaro-openbox-extra')
-    optdepends=('manjaro-openbox-extra-skel')
-    depends=(
-       'manjaro-openbox-core'
-       'android-file-transfer' 'android-tools' 'android-udev' 'audacious-gtk3' 'audacious-plugins-gtk3' 'avahi'
-       'basilisk-bin' 'bind-tools' 'blueman'
-       'catfish' 'chromium' 'claws-mail' 'claws-mail-themes' 'clawsker' 'clonezilla'
-       'exo-gtk3'
-       'ffmpegthumbnailer' 'file-roller' 'freetype2' 'fsarchiver'
-       'galculator' 'gcolor2' 'gparted' 'gpicview-gtk3' 'gsimplecal' 'guake' 'gufw' 'gvfs' 'gvfs-afc' 'gvfs-mtp' 'gvfs-smb'
-       'htop'
-       'inxi'
-       'libgsf' 'libopenraw' 'libreoffice-fresh' 'lxappearance-gtk3' 'lxappearance-obconf-gtk3' 'lynx'
-       'mc' 'mintstick'
-       'networkmanager' 'net-tools' 'nmap' 'ntp'
-       'mlocate' 'mpv'
-       'p7zip' 'pacui' 'pamac' 'pamixer' 'pavucontrol' 'playerctl'
-       'openssh'
-       'pamac' 'poppler-data' 'poppler-glib' 'ps_mem'
-       'qpdfview'
-       'ranger'
-       'screenfetch' 'smbclient' 'sublime-text-dev'
-       'testdisk' 'thunar-gtk3' 'thunar-archive-plugin-gtk3' 'thunar-media-tags-plugin' 'thunar-volman-gtk3' 'tumbler'
-       'ufw' 'unace' 'unrar' 'usb_modeswitch'
-       'vlc-nightly' 'volumeicon'
-       'wicd-gtk' 'wicd-patched'
-       'xfburn' 'xfce4-settings-gtk3'
+    optdepends=(
+        'manjaro-openbox-core' 'manjaro-openbox-extra-skel'
+        'manjaro-guake-config' 'manjaro-zsh-config' 'manjaro-openbox-settings'
+        'manjaro-openbox-common' 'manjaro-openbox-grub-theme' 'manjaro-openbox-scripts'
+        'manjaro-openbox-theming-fonts' 'manjaro-openbox-theming-icons' 'manjaro-openbox-theming-theme'
+        'android-tools' 'android-udev' 'audacious-gtk3' 'audacious-plugins-gtk3' 'avahi'
+        'basilisk-bin' 'blueman'
+        'catfish' 'sylpheed'
+        'exo-gtk3'
+        'ffmpegthumbnailer' 'file-roller' 'freetype2'
+        'galculator' 'gcolor2' 'gpicview-gtk3' 'gsimplecal' 'guake' 'gufw' 'gvfs' 'gvfs-afc' 'gvfs-mtp' 'gvfs-smb'
+        'htop'
+        'inxi'
+        'libgsf' 'libopenraw' 'libreoffice-fresh' 'lxappearance-gtk3' 'lxappearance-obconf-gtk3' 'lynx'
+        'manjaro-pulse' 'mc' 'mintstick'
+        'networkmanager' 'networkmanager-dmenu' 'ntp'
+        'mlocate' 'mpv' 'mtpfs'
+        'p7zip' 'pacui' 'pamac' 'pamixer' 'pavucontrol' 'playerctl' 'pulseaudio-bluetooth'
+        'pulseaudio-ctl' 'pulseaudio-zeroconf'
+        'openssh'
+        'pamac' 'poppler-data' 'poppler-glib' 'ps_mem'
+        'qpdfview'
+        'ranger'
+        'screenfetch' 'smbclient' 'sublime-text-dev'
+        'thunar-gtk3' 'thunar-archive-plugin-gtk3' 'thunar-media-tags-plugin' 'thunar-volman-gtk3' 'tumbler'
+        'udiskie' 'udisks2' 'ufw' 'unarchiver' 'usb_modeswitch'
+        'vlc-nightly' 'volumeicon'
+        'xfburn' 'xfce4-settings-gtk3'
     )
 }

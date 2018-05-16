@@ -1,0 +1,37 @@
+[apps/guake/general]
+prompt-on-quit=true
+window-height=50
+mouse-display=false
+use-login-shell=true
+window-width=65
+max-tab-name-length=100
+gtk-theme-name='Breath-Dark'
+infinite-history=true
+quick-open-enable=true
+history-size=1000
+open-tab-cwd=true
+window-tabbar=true
+start-at-login=true
+quick-open-command-line='termite %(file_path)s'
+compat-delete='delete-sequence'
+default-shell='/bin/zsh'
+abbreviate-tab-names=false
+display-n=0
+scroll-keystroke=true
+use-default-font=false
+use-trayicon=true
+use-scrollbar=true
+window-halignment=0
+use-popup=true
+window-refocus=false
+window-losefocus=false
+window-vertical-displacement=40
+
+[apps/guake/style/background]
+transparency=90
+
+[apps/guake/style/font]
+allow-bold=true
+style='DejaVu Sans Mono 10'
+palette='#292f34:#ab4642:#99cc99:#f7ca88:#006a78:#b48ead:#1abb9b:#d8d8d8:#0a6355:#ab4642:#99cc99:#f7ca88:#006a78:#b48ead:#1abb9b:#f8f8f8:#d8d8d8:#292F34'
+palette-name='Manjaro'
